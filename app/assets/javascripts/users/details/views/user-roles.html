@@ -1,0 +1,20 @@
+<span page-title ng-model="user">{{ 'Roles for: ' | translate }} {{ user.login }}</span>
+
+<h4 translate>Roles</h4>
+<nav>
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: isState('users.details.roles.list')}">
+      <a ui-sref="users.details.roles.list">
+        <span translate>List/Remove</span>
+      </a>
+    </li>
+
+    <li ng-class="{active: isState('users.details.roles.add')}">
+      <a ui-sref="users.details.roles.add">
+        <span translate>Add</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div ui-view></div>

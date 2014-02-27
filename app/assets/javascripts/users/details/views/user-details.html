@@ -1,0 +1,72 @@
+<div class="loading-mask loading-mask-panel icon-3x" ng-show="panel.loading">
+  <i class="icon-spinner icon-spin"></i>
+  {{ "Loading..." | translate }}
+</div>
+
+<section class="nutupane-details" ng-cloak alch-container-scroll>
+
+  <header class="details-header">
+    <h2 class="pull-left" translate>User: {{ user.login }}</h2>
+
+    <div class="details-actions pull-right">
+      <button class="btn btn-danger"
+              ng-click="openModal()" ng-disabled="!user.permissions.deletable" translate>
+        Remove
+      </button>
+
+      <button class="btn btn-default" ui-sref="users.index">
+        <i class="icon-remove"></i>
+        {{ "Close" | translate }}
+      </button>
+
+      <div alch-modal="removeUser(user)" model="user"
+           modal-header="{{ 'Remove User ' + user.name + '?' | translate }}"
+           modal-body="{{ 'Are you sure you want to remove user ' + user.name + '?' | translate }}"></div>
+
+    </div>
+  </header>
+
+  <nav class="details-navigation">
+    <ul>
+      <li ng-class="{active: isState('users.details.info')}">
+        <a ui-sref="users.details.info">
+          <span translate>
+            Details
+          </span>
+        </a>
+      </li>
+      <li ng-class="{active: stateIncludes('users.details.roles')}">
+        <a ui-sref="users.details.roles.list">
+          <span translate>
+            Roles
+          </span>
+        </a>
+      </li>
+      <li ng-class="{active: stateIncludes('users.details.roles')}">
+        <a ui-sref="users.details.roles.list">
+          <span translate>
+            User Groups
+          </span>
+        </a>
+      </li>
+      <li ng-class="{active: stateIncludes('users.details.roles')}">
+        <a ui-sref="users.details.roles.list">
+          <span translate>
+            Locations
+          </span>
+        </a>
+      </li>
+      <li ng-class="{active: stateIncludes('users.details.roles')}">
+        <a ui-sref="users.details.roles.list">
+          <span translate>
+            Organizations
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div alch-alert success-messages="successMessages" error-messages="errorMessages"></div>
+
+  <section class="nutupane-sub-section" ui-view></section>
+</section>
